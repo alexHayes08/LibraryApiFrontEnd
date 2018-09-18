@@ -1,51 +1,58 @@
-<div>
-  TODO: Login stuff.
-</div>
-<div>
-  <h1>Manage Lockables</h1>
-  <div>
-    <div id="search-filters">
-      <label for="search-filter-created-after">
-        Created after
-      </label>
-      <input type="date" placeholder="Created after" id="search-filter-created-after">
-      <label for="search-filter-created-before">
-        Created before
-      </label>
-      <input type="date" placeholder="Created before" id="search-filter-created-before">
-      <div>
-        <h2>Locks</h2>
+<app-navbar></app-navbar>
+<div class="body-section">
+  <div class="container">
+    <div class="row">
+      <h1>Manage Lockables</h1>
+    </div>
+    <div id="search-filters" class="row">
+      <div class="col">
+        <label for="search-filter-created-after">
+          Created after
+        </label>
+        <input type="date" placeholder="Created after" id="search-filter-created-after">
+      </div>
+      <div class="col">
+          <label for="search-filter-created-before">
+            Created before
+          </label>
+          <input type="date" placeholder="Created before" id="search-filter-created-before">
+      </div>
+      <div class="col">
         <label for="search-filter-has-locks">
-          Has locks
+          <input type="checkbox" id="search-filter-has-locks">
+          <span>Has locks</span>
         </label>
-        <input type="checkbox" id="search-filter-has-locks">
+      </div>
+      <div class="col">
         <label for="search-filter-only-readonly">
-          Has only readonly locks
+          <input type="checkbox" id="search-filter-only-readonly">
+          <span>Has only readonly locks</span>
         </label>
-        <input type="checkbox" id="search-filter-only-readonly">
+      </div>
+      <div class="col">
+        <label for="search-lockables">
+          Search for Lockables
+        </label>
+        <button type="button" id="search-lockables">
+          Search
+        </button>
       </div>
     </div>
-    <label for="search-lockables">
-      Search for Lockables
-    </label>
-    <button type="button" id="search-lockables">
-      Search
-    </button>
-  </div>
-  <div>
-    <label for="create-lockable">
-      Create
-    </label>
-    <button type="button" id="create-lockable">
-      Create
-    </button>
-  </div>
-  <div>
-    <label for="delete-selected-lockables">
-      Delete
-    </label>
-    <button type="button" id="delete-selected-lockables">
-      Delete
-    </button>
+    <div>
+      <label for="create-lockable">
+        Create
+      </label>
+      <button type="button" id="create-lockable">
+        Create
+      </button>
+    </div>
+    <div>
+      <label for="delete-selected-lockables">
+        Delete
+      </label>
+      <button type="button" id="delete-selected-lockables">
+        Delete
+      </button>
+    </div>
   </div>
 </div>
