@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <h1>
+        Intro to Selenium With C#
+      </h1>
+      <a href="https://seleniumhq.github.io/selenium/docs/api/dotnet/#" target="_blank">
+        Official API Documentation
+      </a>
+      <p>
+        Using Visual Studio (VS) create a Unit Test Project,
+        install the needed files, and being writing tests
+        that interact with a web page.
+      </p>
+      <h2>Table of Contents</h2>
+      <ol class=table-of-contents>
+        <li>
+          <a href="#getting-started">Getting Started</a>
+        </li>
+        <li>
+          <a href="#selecting-elements">Selecting Elements</a>
+        </li>
+        <li>
+          <a href="#interacting-with-the-webpage">Interacting with the Web Page</a>
+        </li>
+      </ol>
+      <h2 id="getting-started">#Getting Started</h2>
+      <p>
+        In Visual Studio create a new <strong>Unit Test Project</strong>.
+        <span class="italics">(Should be under Visual C# > Test > Unit Test Project)</span>
+        Since Selenium is a Universal Windows Platform library, the projects
+        platform can be either .Net Core or with the .Net Framework.
+        Warning: Make sure to use whichever platform your coworkers are using, it'll
+        make it much simpler. Once the project is created you need to install the 
+        following nuget packages:
+      </p>
+      <pre>
+        <code>
+          Selenium.WebDriver
+          Selenium.Support
+        </code>
+      </pre>
+      <p>
+        Also make sure the desired Web Driver is installed. Instructions are 
+        <a href="setting-up-selenium" target="_blank">here</a>.
+      </p>
+      <h2 id="selecting-elements">#Selecting Elements</h2>
+      <pre>
+        <code>
+          IWebElement element = <strong>YourDriver</strong>.FindElement(By.CssSelector("#some .css *[selector]"));
+          IReadOnlyList&#60;IWebElement&#62; elements = <strong>YourDriver</strong>.FindElements(By.CssSelector("#some .css *[selector]"));
+        </code>
+      </pre>
+      <h2 id="interacting-with-the-webpage">#Interacting with the Web Page</h2>
+      <h3>
+        <code>Actions</code> Class
+      </h3>
+      <p>
+        The <code>Actions</code> class is critical for performing simple and complex operations on a
+        web page. It supports the following operations:
+      </p>
+      <pre>
+        <code>
+          Click(...)
+          ClickAndHold(...)
+          ContextClick()
+          DoubleClick(...)
+          DragAndDrop(...)
+          DragAndDropToOffset(...)
+          GetLocatableFromElement(...)
+          KeyDown(...)
+          KeyUp(...)
+          MoveByOffset(...)
+          MoveToElement(...)
+          Release(...)
+          SendKeys(...)
+        </code>
+      </pre>
+      <p>
+        It's a chainable API and you must call <code>actions.Build(); actions.Perform();</code> to actually
+        perform the action. For example, if the test needed to hover over an element, wait for a hover
+        event to be triggered which makes an element appear, then drag and drop the newly appeared
+        element on another elementappears, it might look like the following:
+      </p>
+      <pre>
+        <code>
+          var actions = new Actions(yourIWebDriver);
+          actions.MoveToElement(yourHoverElement)
+              .Build()
+              .Perform();
+          Thread.Sleep(4000);
+          actions.ClickAndHold(yourNewlyAppearedElement)
+              .DragAndDropToOffset(50, -50)
+              .Release()
+              .Build()
+              .Perform();
+        </code>
+      </pre>
+      <h3>Different Ways of Clicking Elements</h3>
+      <p>
+        Standard way to click elements:
+        <pre>
+          <code>
+            <strong>yourIWebDriver</strong>.FindElement(By.CssSelector("yourCssSelector")).Click();
+          </code>
+        </pre>
+        Using the <code>Actions</code> class to click elements:
+        <pre>
+          <code>
+            // #1
+            var yourElement = Driver.FindElement(By.CssSelector("yourElementsCssSelector"));
+            var actions = new Actions(yourIWebDriver);
+            actions.Click(yourElement)
+                .Build()
+                .Perform();
+  
+            // #2
+            actions.MoveToElement(yourElement)
+                .Click()
+                .Build()
+                .Perform();
+  
+            // #3
+            actions.MoveToElement(yourElement)
+                .ClickAndHold()
+                .Release()
+                .Build()
+                .Perform();
+          </code>
+        </pre>
+      <!-- </p> -->
+    </div>
+  </div>
+</div>
