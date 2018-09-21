@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LockablesService } from './lockables.service';
+import { LockablesService } from './services/lockables.service';
 
 @Component({
   selector: 'app-lockables',
