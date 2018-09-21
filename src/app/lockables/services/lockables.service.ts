@@ -13,7 +13,7 @@ export class LockablesService {
 
     constructor(private http: HttpClient) { }
 
-    paginateLockables(paginate: Paginate): Observable<Lockable[]> {
+    paginateLockables(paginate: Paginate<Lockable>): Observable<Lockable[]> {
         const lockables = this.http.post<Lockable[]>(
             this.serverUrl,
             {
