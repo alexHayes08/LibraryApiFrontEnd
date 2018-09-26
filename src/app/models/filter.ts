@@ -1,7 +1,7 @@
-import { FieldPath, WhereFilterOp } from '@google-cloud/firestore';
+import { WhereFilterOp } from './google-cloud.types';
 
 export interface Filter<T> {
-    field: string|FieldPath|keyof T;
+    field: string|keyof T;
     comparator: WhereFilterOp;
     value: any;
 }

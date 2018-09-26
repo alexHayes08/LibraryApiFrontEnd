@@ -128,6 +128,16 @@
                 .Perform();
           </code>
         </pre>
+      <h3>Retrieving Values From Input Elements</h3>
+      <p>
+        A common issue for beginners is how to get the value of an input element or a textarea
+        element. It's retrieved by getting the value of the 'value' attribute. This works even 
+        if the element in the html doesn't have that attribute specified in the html. Example:
+        <pre>
+          <code>
+              var value = #[span.italics yourIWebDriver].FindElement(By.CssSelector("yourElementsCssSelector")).GetAttribute("value");
+          </code>
+        </pre>
       <!-- </p> -->
     </div>
   </div>

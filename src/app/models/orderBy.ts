@@ -1,7 +1,7 @@
-import { OrderByDirection, FieldPath } from '@google-cloud/firestore';
+import { OrderByDirection } from './google-cloud.types';
 
 export interface OrderBy {
-    fieldPath: string|FieldPath;
+    fieldPath: string;
     directionStr?: OrderByDirection;
 }
 
